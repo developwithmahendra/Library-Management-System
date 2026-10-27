@@ -1,0 +1,63 @@
+<section class="return-book">
+
+<!-- Heading Section -->
+<div class="return-heading">
+    <img src="images/library 7 return logo.png" alt="Return Book Logo">
+
+    <div>
+        <h1>Return Book</h1>
+        <p>Return Issued Book</p>
+    </div>
+</div>
+
+<!-- Return Book Form -->
+<form id="returnBookForm">
+
+    <div class="form-row">
+
+        <!-- Student ID -->
+        <div class="form-group">
+            <label for="returnStudentId">Student ID</label>
+            <input type="text"
+                   id="returnStudentId"
+                   placeholder="e.g. S001"
+                   required>
+        </div>
+
+        <!-- Book ID -->
+        <div class="form-group">
+            <label for="returnBookId">Book ID</label>
+            <input type="text"
+                   id="returnBookId"
+                   placeholder="e.g. B001"
+                   required>
+        </div>
+
+        <!-- Return Date -->
+        <div class="form-group">
+            <label for="returnDate">Return Date</label>
+            <input type="date"
+                   id="returnDate"
+                   required>
+        </div>
+
+    </div>
+
+    <!-- Buttons -->
+    <div class="form-actions">
+        <button type="submit" class="return-btn">
+            Return Book
+        </button>
+
+        <button type="reset" class="reset-btn">
+            Reset
+        </button>
+    </div>
+
+    <!-- Message -->
+    <p id="returnMessage"></p>
+
+</form>
+
+
+</section>

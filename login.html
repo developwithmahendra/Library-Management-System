@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Defines the character encoding and makes the page responsive -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Links the external CSS file for page styling -->
+    <link rel="stylesheet" href="stylesheet1.css">
+
+    <!-- Sets the title displayed in the browser tab -->
+    <title>Library Management System - Login</title>
+</head>
+<body>
+
+    <!-- Main container for the login page -->
+    <main class="container">
+        <section class="right-panel">
+
+            <!-- Displays the library logo and login heading -->
+            <div class="logo">
+                <img src="images/library 2 logo.png" alt="Library Logo">
+                <p>Log in</p>
+            </div>
+
+            <!-- Login form for entering username and password -->
+            <form id="loginForm">
+
+                <!-- Username input field -->
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <span class="input-icon">👤</span>
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Enter your username"
+                            required>
+                    </div>
+                </div>
+
+                <!-- Password input field -->
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required>
+                    </div>
+                </div>
+
+                <!-- Submits the login form -->
+                <button type="submit" class="login-btn">
+                    Login &nbsp; →
+                </button>
+
+            </form>
+        </section>
+    </main>
+
+    <!-- JavaScript handles form submission and page redirection -->
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+
+            // Prevents the form from reloading the page
+            event.preventDefault();
+
+            // Redirects the user to the dashboard page
+            window.location.href = "dassboard.html";
+        });
+    </script>
+
+</body>
+</html>
+

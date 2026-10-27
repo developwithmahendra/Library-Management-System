@@ -1,0 +1,131 @@
+
+<section>
+    <div class="search">
+        <img src="images/library 5 search logo.png" alt="Search Logo">
+    </div>
+
+    <div class="search">
+        <p>Search Box</p>
+        <p>Search by Book Name or Author</p>
+    </div>
+
+    <form id="search-book">
+        <div class="search-container">
+            <input
+                type="text"
+                id="searchQuery"
+                placeholder="Enter book name or author"
+                autocomplete="off"
+            >
+            <button type="submit" class="search-btn">Search</button>
+        </div>
+    </form>
+
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Total Copies</th>
+                    <th>Available Copies</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="bookTableBody"></tbody>
+        </table>
+    </div>
+</section>
+
+<script>
+(function () {
+    const input = document.getElementById("searchQuery");
+    const table = document.getElementById("bookTableBody");
+    const form = document.getElementById("search-book");
+
+    function searchBooks() {
+        let books = [];
+
+        try {
+            books = JSON.parse(
+                localStorage.getItem("libraryBooks") || "[]"
+            );
+
+            if (!Array.isArray(books)) {
+                books = [];
+            }
+        } catch (error) {
+            console.error("Error loading books:", error);
+        }
+
+        const search = input.value.trim().toLowerCase();
+
+        const results = books.filter(function (book) {
+            return (
+                String(book.name || "").toLowerCase().includes(search) ||
+                String(book.author || "").toLowerCase().includes(search) ||
+                String(book.id || "").toLowerCase().includes(search)
+            );
+        });
+
+        table.innerHTML = "";
+
+        if (results.length === 0) {
+            const row = document.createElement("tr");
+            const cell = document.createElement("td");
+
+            cell.colSpan = 7;
+            cell.textContent = books.length === 0
+                ? "No books available. Please add a book first."
+                : "No matching book found.";
+
+            row.appendChild(cell);
+            table.appendChild(row);
+            return;
+        }
+
+        results.forEach(function (book) {
+            const row = document.createElement("tr");
+
+            const values = [
+                book.id ?? "",
+                book.name ?? "",
+                book.author ?? "",
+                book.category ?? "",
+                book.total ?? 0,
+                book.available ?? 0,
+                Number(book.available ?? 0) > 0
+                    ? "Available"
+                    : "Not Available"
+            ];
+
+            values.forEach(function (value) {
+                const cell = document.createElement("td");
+                cell.textContent = value;
+                row.appendChild(cell);
+            });
+
+            table.appendChild(row);
+        });
+    }
+
+    input.addEventListener("input", searchBooks);
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        searchBooks();
+    });
+
+    // Display all books when the page loads.
+    searchBooks();
+
+    // Refresh the table if the stored book data changes.
+    window.addEventListener("storage", function (event) {
+        if (event.key === "libraryBooks") {
+            searchBooks();
+        }
+    });
+})();

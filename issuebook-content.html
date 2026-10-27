@@ -1,0 +1,56 @@
+<section class="issue-book">
+    <!-- Heading Section -->
+    <div class="issue-heading">
+        <img src="images/library 6 issue logo.png" alt="Issue Book Logo">
+        <div>
+            <h1>Issue Book</h1>
+            <p>Issue a book to student</p>
+        </div>
+    </div>
+    <!-- Issue Book Form -->
+    <form id="issueBookForm">
+        <div class="form-row">
+            <!-- Student ID -->
+            <div class="form-group">
+                <label for="studentId">Student ID</label>
+                <input type="text"
+                       id="studentId"
+                       placeholder="e.g. S001"
+                       required>
+            </div>
+            <!-- Book ID -->
+            <div class="form-group">
+                <label for="bookId">Book ID</label>
+                <input type="text"
+                       id="bookId"
+                       placeholder="e.g. B001"
+                       required>
+            </div>
+            <!-- Issue Date -->
+            <div class="form-group">
+                <label for="issueDate">Issue Date</label>
+                <input type="date"
+                       id="issueDate"
+                       required>
+            </div>
+            <!-- Return Date -->
+            <div class="form-group">
+                <label for="returnDate">Return Date</label>
+                <input type="date"
+                       id="returnDate"
+                       required>
+            </div>
+        </div>
+        <!-- Buttons -->
+        <div class="form-actions">
+            <button type="submit" class="issue-btn">
+                Issue Book
+            </button>
+            <button type="reset" class="reset-btn">
+                Reset
+            </button>
+        </div>
+        <!-- Message -->
+        <p id="issueMessage"></p>
+    </form>
+</section>

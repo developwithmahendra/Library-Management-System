@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library System Dashboard</title>
+    <script src="https://kit.fontawesome.com/d3de095456.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="searchbook.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon"><img src="images/library 4 left logo.png" alt=""></div>
+                <div class="logo-text">
+                    <h2>Library<br>System</h2>
+                </div>
+            </div>
+            <ul class="menu">
+                <li>
+                    <a href="#" class="active" data-page="home">
+                        <span class="icon"><i class="fa-solid fa-house"></i></span> Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="addBookLink" data-page="addbook">
+                        <span class="icon"><i class="fa-brands fa-stack-overflow"></i></span> Add Book
+                    </a>
+                </li>
+                <li>
+                    <a href="addbook-content.html" data-page="viewbooks">
+                        <span class="icon"><i class="fa-solid fa-layer-group"></i></span> View Books
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-page="searchbook">
+                        <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span> Search Book
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-page="issuebook">
+                        <span class="icon"><i class="fa-solid fa-newspaper"></i></span> Issue Book
+                    </a>
+                </li>
+                <li>
+                    <a href="#" data-page="returnbook">
+                        <span class="icon"><i class="fa-regular fa-share-from-square"></i></span> Return Book
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <span class="icon"><i class="fa-solid fa-right-to-bracket"></i></span> Logout
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- RIGHT SIDE CONTENT -->
+        <main class="main-content" id="mainContent">
+            <header class="topbar">
+                <span>Welcome, Admin</span>
+                <div class="profile-icon"><i class="fa-solid fa-circle-user"></i></i></div>
+            </header>
+            <section class="page-heading">
+                <h1>Dashboard</h1>
+                <p>Manage your library easily</p>
+            </section>
+            <!-- DASHBOARD CARDS -->
+            <section class="cards">
+                <a href="#" class="card card-blue" data-page="addbook">
+                    <div class="card-icons">
+                        <span class="main-icon"><i class="fa-solid fa-book-open"></i></span>
+                        <span class="small-icon"></span>
+                    </div>
+                    <h2>Add Book</h2>
+                    <p>Add new books to library</p>
+                </a>
+                <a href="viewbooks-content.html" class="card card-green" data-page="viewbooks">
+                    <div class="card-icons">
+                        <span class="main-icon"><i class="fa-solid fa-bars"></i></span>
+                    </div>
+                    <h2>View Books</h2>
+                    <p>See all available books</p>
+                </a>
+                <a href="#" class="card card-orange" data-page="searchbook">
+                    <div class="card-icons">
+                        <span class="main-icon"><i class="fa-solid fa-binoculars"></i></span>
+                    </div>
+                    <h2>Search Book</h2>
+                    <p>Find books by name or author</p>
+                </a>
+                <a href="#" class="card card-purple" data-page="issuebook">
+                    <div class="card-icons">
+                        <span class="main-icon"><i class="fa-solid fa-envelopes-bulk"></i></span>
+                    </div>
+                    <h2>Issue Book</h2>
+                    <p>Issue book to student</p>
+                </a>
+                <a href="#" class="card card-red" data-page="returnbook">
+                    <div class="card-icons">
+                        <span class="main-icon"><i class="fa-solid fa-arrow-rotate-left"></i></span>
+ 
+                    </div>
+                    <h2>Return Book</h2>
+                    <p>Return issued book</p>
+                </a>
+            </section>
+        </main>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const mainContent = document.getElementById("mainContent");
+        const menuLinks = document.querySelectorAll(".menu a[data-page]");
+        const dashboardCards = document.querySelectorAll(".card[data-page]");
+
+        // Load the selected page into the right side
+        function loadPage(page) {
+            if (page === "home") {
+                location.reload();
+                return;
+            }
+
+            const pages = {
+                addbook: "addbook-content.html",
+                viewbooks: "viewbooks-content.html",
+                searchbook: "searchbook-content.html",
+                issuebook: "issuebook-content.html",
+                returnbook: "returnbook-content.html"
+            };
+
+            const file = pages[page];
+            if (!file) return;
+
+            fetch(file)
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error("Page not found");
+                    }
+                    return response.text();
+                })
+                .then(function(html) {
+                    mainContent.innerHTML = html;
+
+                    // Update active sidebar item
+                    menuLinks.forEach(function(link) {
+                        link.classList.toggle(
+                            "active",
+                            link.dataset.page === page
+                        );
+                    });
+
+                    // Execute scripts inside loaded HTML
+                    const scripts = mainContent.querySelectorAll("script");
+                    scripts.forEach(function(oldScript) {
+                        const newScript = document.createElement("script");
+                        Array.from(oldScript.attributes).forEach(function(attr) {
+                            newScript.setAttribute(attr.name, attr.value);
+                        });
+                        newScript.textContent = oldScript.textContent;
+                        oldScript.replaceWith(newScript);
+                    });
+                })
+                .catch(function(error) {
+                    console.error(error);
+                    mainContent.innerHTML = `
+                        <section class="page-heading">
+                            <h1>Page not found</h1>
+                            <p>
+                                The file ${file} could not be loaded.
+                                Please check that it exists in your project folder.
+                            </p>
+                        </section>
+                    `;
+                });
+        }
+
+        // Sidebar navigation
+        menuLinks.forEach(function(link) {
+            link.addEventListener("click", function(event) {
+                event.preventDefault();
+                loadPage(link.dataset.page);
+            });
+        });
+
+        // Dashboard cards navigation
+        dashboardCards.forEach(function(card) {
+            card.addEventListener("click", function(event) {
+                event.preventDefault();
+                loadPage(card.dataset.page);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+
+/* Google Font: Poppins font use karne ke liye */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* Reset: Browser ki default spacing hatane ke liye */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Width mein padding aur border bhi count honge */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Page Background: Puri screen ka background */
+body {
+    min-height: 100vh; /* Screen ki kam se kam puri height */
+    display: flex; /* Elements ko arrange karne ke liye */
+    justify-content: center; /* Horizontal direction mein center */
+    align-items: center; /* Vertical direction mein center */
+    padding: 20px;
+    background: #f4f8fb;
+}
+
+/* Login Container: Login box ka design */
+.container {
+    width: 100%;
+    max-width: 360px; /* Box ki maximum width */
+    padding: 25px 30px;
+    background: rgba(255, 255, 255, 0.9); /* Halka transparent white */
+    border-radius: 12px; /* Corners ko gol karne ke liye */
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05); /* Halka shadow */
+}
+
+/* Right Panel: Login ke elements ko vertical arrange karna */
+.right-panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Elements ko upar se neeche rakhna */
+    align-items: center;
+}
+
+/* Logo Section */
+.logo {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.logo img {
+    display: block;
+    width: 129px;
+    height: auto; /* Image ka original ratio maintain rahega */
+    margin: 0 auto 12px;
+}
+
+.logo p {
+    color: #0b2d50;
+    font-size: 24px;
+    font-weight: 700; /* Bold text */
+    text-align: center;
+}
+
+/* Input Group: Har input field ka section */
+.input-group {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Input Wrapper: Input aur icon ka outer box */
+.input-wrapper {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Icon aur input ke beech ki doori */
+    padding: 0 12px;
+    border: 2px solid #e1e9f0;
+    border-radius: 8px;
+    background: #fff;
+    transition: 0.3s; /* Changes ko smooth banata hai */
+}
+
+/* Focus: Jab user input box par click kare */
+.input-wrapper:focus-within {
+    border-color: #1677e8;
+    box-shadow: 0 0 5px rgba(22, 119, 232, 0.12);
+}
+
+/* Input Icon: Input ke andar bana icon */
+.input-icon {
+    font-size: 16px;
+    color: #536b82;
+}
+
+/* Input Field: Username aur password likhne ki jagah */
+.input-wrapper input {
+    width: 100%;
+    min-width: 0; /* Flex layout mein input ko bahar nikalne se rokta hai */
+    height: 100%;
+    border: none;
+    outline: none; /* Click karne par default outline hatata hai */
+    background: transparent; /* Peechhe ka background dikhata hai */
+    color: #0b2d50;
+    font-size: 13px;
+}
+
+/* Placeholder: Input ke andar dikhne wala hint */
+.input-wrapper input::placeholder {
+    color: #94a3b8;
+}
+
+/* Toggle Password: Password dikhane ya chhupane ka button */
+.toggle-password {
+    border: none;
+    background: transparent;
+    color: #1677e8;
+    font-size: 11px;
+    cursor: pointer; /* Mouse le jaane par hand pointer */
+}
+
+/* Login Button */
+.login-btn {
+    width: 100%;
+    height: 40px;
+    margin-top: 4px;
+    border: none;
+    border-radius: 7px;
+    background: #0875e1;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Hover: Mouse button par le jaane par */
+.login-btn:hover {
+    background: #0563c5;
+}
+
+/* Register Section */
+.register {
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.register p {
+    color: #075bc4;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Default Login Credentials: Demo login details */
+.default-login {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Divider: Do sections ke beech ki line */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+/* Before aur After: Text ke dono taraf line banate hain */
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1; /* Available space ko barabar use karna */
+    height: 1px;
+    background: #d5e3f3;
+}
+
+/* Login Details */
+.credentials {
+    margin-top: 10px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+.credentials strong {
+    color: #075bc4;
+}
+
+/* Error Message: Galat details par error dikhane ke liye */
+.error-message {
+    width: 100%;
+    min-height: 16px;
+    margin-top: 8px;
+    color: #dc2626;
+    font-size: 11px;
+    text-align: center;
+}
+
+/* Responsive Design: Mobile screen ke liye */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+
+    .container {
+        padding: 25px 22px;
+    }
+}
+
+/* Small Mobile: 320px ya usse chhoti screen ke liye */
+@media (max-width: 320px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    .logo img {
+        width: 45px;
+    }
+
+    .logo p {
+        font-size: 21px;
+    }
+}
+
