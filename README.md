@@ -35,7 +35,7 @@ Library-Management-System/
 └── images/
 
 
-*Note: Update the file list above to match your actual project files.*
+Live site: https://developwithmahendra.github.io/Library-Management-System/
 
 ## ▶️ How to Run
 
