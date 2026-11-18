@@ -1,83 +1,246 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
+/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
 body {
     font-family: 'Poppins', sans-serif;
-}
-/* 1. Sabhi extra gaps aur margins khatam karne ke liye */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; /* Width aur padding ki jhik-jhik khatam */
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* 2. Puri body aur text ko accha dikhane ke liye */
-body {
-  font-family: sans-serif; /* Simple aur clean font */
-  line-height: 1.6;        /* Subah-subah text padhne me aasaani ho */
-  background-color: #f4f4f4; /* Light gray background (aankhon par zor nahi padta) */
-  color: #333;             /* Dark gray text */
-}
-
-/* 3. Photo (Images) screen se bahar na bhage */
+/* Images */
 img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
-/* 4. Links se wo ugly underline hatane ke liye */
+/* Links */
 a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
+
+/* Logo */
 .logo {
     width: 545px;
     margin-left: 71px;
-    margin-top: 12px; /* Yahan se image upar se niche khisak jayegi */
+    margin-top: 12px;
 }
 
-.h2{
-position: absolute;
+/* Heading 2 */
+.h2 {
+    position: absolute;
     top: 135px;
     left: 603px;
     font-size: 51px;
     font-weight: 750;
     color: #0B2D50;
 }
-.h1{
-position: absolute;
+
+/* Heading 1 */
+.h1 {
+    position: absolute;
     top: 212px;
     left: 603px;
-        font-size: 51px;
+    font-size: 51px;
     font-weight: 700;
     color: #0B2D50;
 }
 
- .h3 {
-  position: absolute;
-  top: 100px;     /* Upar karne ke liye (number kam/bada karke adjust karein) */
-  right: 50px;    /* Right side mein shift karne ke liye */
+/* Heading 3 */
+.h3 {
+    position: absolute;
+    top: 100px;
+    right: 50px;
 }
 
+/* Bullets */
 .bullets ul {
-  display: flex;         /* Ek line mein rakhne ke liye */
-  gap: 30px;             /* Words ke beech gap */
-  list-style-type: disc; /* Bullet type */
-  color: #1769AA;
-      position: absolute;
+    display: flex;
+    gap: 30px;
+    list-style-type: disc;
+    color: #1769AA;
+    position: absolute;
     top: 310px;
     right: 26px;
     font-size: 23px;
-    
 }
+
+/* Button */
 .button {
     position: absolute;
     top: 365px;
     right: 181px;
-    background-color: #034cf6; 
-    color: #FFFFFF;              
-    padding: 12px 42px;        
-    font-size: 20px;           
-    font-weight: 600;          
-    border: none;              
-    border-radius: 6px;        
-    cursor: pointer;       
+    background-color: #034cf6;
+    color: #FFFFFF;
+    padding: 12px 42px;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+
+/* =================================
+   TABLET RESPONSIVE
+   768px TO 1024px
+================================= */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .logo {
+        width: 400px;
+        margin-left: 30px;
+        margin-top: 20px;
+    }
+
+    .h2 {
+        top: 130px;
+        left: 450px;
+        font-size: 38px;
+    }
+
+    .h1 {
+        top: 195px;
+        left: 450px;
+        font-size: 38px;
+    }
+
+    .h3 {
+        top: 90px;
+        right: 30px;
+    }
+
+    .bullets ul {
+        top: 280px;
+        right: 20px;
+        gap: 20px;
+        font-size: 18px;
+    }
+
+    .button {
+        top: 340px;
+        right: 100px;
+        font-size: 18px;
+        padding: 10px 30px;
+    }
+}
+
+
+/* =================================
+   MOBILE RESPONSIVE
+   481px TO 767px
+================================= */
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+
+    .logo {
+        width: 90%;
+        max-width: 350px;
+        display: block;
+        margin: 20px auto;
+    }
+
+    .h2 {
+        position: static;
+        text-align: center;
+        font-size: 30px;
+        margin-top: 20px;
+    }
+
+    .h1 {
+        position: static;
+        text-align: center;
+        font-size: 30px;
+        margin-top: 5px;
+    }
+
+    .h3 {
+        position: static;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .bullets ul {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        font-size: 16px;
+        margin: 20px;
+    }
+
+    .button {
+        position: static;
+        display: block;
+        width: fit-content;
+        margin: 20px auto;
+        font-size: 16px;
+        padding: 12px 30px;
+    }
+}
+
+
+/* =================================
+   SMALL MOBILE RESPONSIVE
+   480px AND BELOW
+================================= */
+
+@media screen and (max-width: 480px) {
+
+    .logo {
+        width: 95%;
+        max-width: 280px;
+        display: block;
+        margin: 20px auto;
+    }
+
+    .h2 {
+        position: static;
+        text-align: center;
+        font-size: 25px;
+        margin-top: 15px;
+    }
+
+    .h1 {
+        position: static;
+        text-align: center;
+        font-size: 25px;
+        margin-top: 5px;
+    }
+
+    .h3 {
+        position: static;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .bullets ul {
+        position: static;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        font-size: 14px;
+        margin: 15px;
+    }
+
+    .button {
+        position: static;
+        display: block;
+        width: fit-content;
+        margin: 20px auto;
+        font-size: 15px;
+        padding: 10px 25px;
+    }
 }
